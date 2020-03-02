@@ -40,19 +40,19 @@ app.post('/api/register', async function(req, res) {
     });
 });
 
-app.post('/api/login', async (req, res) => {
-    console.log(req.body);
-    const { email, password } = req.body;
-    con.query(`select * from User where email = ?`, [email], (err, row) => {
-        if (err) throw err;
-        console.log(row[0].password);
-        // compares hashed password saved in db with the password entered by the user on the client side
-        bcrypt.compare(password, row[0].password, (err, res) => {
-            if (err) throw err;
-            console.log(res);
-        })
-    })
-});
+// app.post('/api/login', async (req, res) => {
+//     console.log(req.body);
+//     const { email, password } = req.body;
+//     con.query(`select * from User where email = ?`, [email], (err, row) => {
+//         if (err) throw err;
+//         console.log(row[0].password);
+//         // compares hashed password saved in db with the password entered by the user on the client side
+//         bcrypt.compare(password, row[0].password, (err, res) => {
+//             if (err) throw err;
+//             console.log(res);
+//         })
+//     })
+// });
 
 app.post('/api/authenticate', async (req, res) => {
     const { email, password } = req.body;

@@ -3,7 +3,7 @@ const secret = "my_secret";
 
 const withAuth = (req, res, next) => {
     const token = req.cookies.token;
-
+    console.log(token);
     if (!token) {
         res.status(403).send('Unauthorized: No token provided');
     } else {
